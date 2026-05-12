@@ -1,5 +1,5 @@
-import git
 import shutil
+import subprocess
 from pathlib import Path
 from typing import Optional
 
@@ -8,12 +8,18 @@ class SkillMarket:
         self.repo_url = repo_url
         self.cache_dir = Path(local_cache_dir)
 
+    def _run_git(self, *args, cwd: Optional[Path] = None) -> str:
+        cmd = ["git"] + list(args)
+        result = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError(f"Git command failed: {' '.join(cmd)}\n{result.stderr}")
+        return result.stdout
+
     def sync(self):
         if self.cache_dir.exists():
-            repo = git.Repo(self.cache_dir)
-            repo.remotes.origin.pull()
+            self._run_git("pull", cwd=self.cache_dir)
         else:
-            git.Repo.clone_from(self.repo_url, self.cache_dir)
+            self._run_git("clone", self.repo_url, str(self.cache_dir))
 
     def install(self, skill_name: str, target_dir: str = "skills") -> bool:
         self.sync()
