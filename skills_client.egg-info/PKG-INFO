@@ -1,0 +1,30 @@
+Metadata-Version: 2.4
+Name: skills-client
+Version: 1.0.0
+Summary: Cross-project AI Agent skill client SDK: load SKILL.md, tool registry, skill market sync, LangGraph integration
+Author-email: Your Name <your@email.com>
+License: MIT
+Project-URL: Homepage, https://github.com/zouxiuxiu/skills-client
+Project-URL: Repository, https://github.com/zouxiuxiu/skills-client.git
+Project-URL: Documentation, https://github.com/zouxiuxiu/skills-client#readme
+Keywords: ai,agent,skills,llm,langchain
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: pydantic>=2.5
+Provides-Extra: langchain
+Requires-Dist: langchain-core>=0.2; extra == "langchain"
+Provides-Extra: mcp
+Requires-Dist: mcp>=0.1.0; extra == "mcp"
+Provides-Extra: full
+Requires-Dist: skills-client[langchain,mcp]; extra == "full"
+
+# skills-client

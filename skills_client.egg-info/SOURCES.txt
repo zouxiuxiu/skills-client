@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+skills_client/__init__.py
+skills_client/integration.py
+skills_client/loader.py
+skills_client/market.py
+skills_client/mcp_adapter.py
+skills_client/models.py
+skills_client/registry.py
+skills_client.egg-info/PKG-INFO
+skills_client.egg-info/SOURCES.txt
+skills_client.egg-info/dependency_links.txt
+skills_client.egg-info/requires.txt
+skills_client.egg-info/top_level.txt

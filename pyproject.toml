@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skills-client"
+version = "1.0.0"
+description = "Cross-project AI Agent skill client SDK: load SKILL.md, tool registry, skill market sync, LangGraph integration"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Your Name", email = "your@email.com" }
+]
+keywords = ["ai", "agent", "skills", "llm", "langchain"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "pyyaml>=6.0",
+    "pydantic>=2.5",
+]
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=0.2"]
+mcp = ["mcp>=0.1.0"]           # 如果官方包版本号不同，请根据实际情况调整
+full = ["skills-client[langchain,mcp]"]
+
+[project.urls]
+Homepage = "https://github.com/zouxiuxiu/skills-client"
+Repository = "https://github.com/zouxiuxiu/skills-client.git"
+Documentation = "https://github.com/zouxiuxiu/skills-client#readme"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["skills_client*"]
