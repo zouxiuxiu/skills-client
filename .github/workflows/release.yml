@@ -1,0 +1,30 @@
+name: Build and Release Wheel
+
+on:
+  push:
+    tags:
+      - 'v*'   # 当推送如 v1.0.0, v1.0.1 等标签时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install build tools
+        run: pip install build
+
+      - name: Build wheel
+        run: python -m build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*.whl
+          generate_release_notes: true
